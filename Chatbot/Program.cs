@@ -25,6 +25,7 @@ namespace Chatbot
             // Continue chatbot logic here
             DisplayAsciiArt();
             TextGreeting();
+            ResponseSystem();
 
         }
         static void DisplayAsciiArt()
@@ -60,6 +61,56 @@ namespace Chatbot
 
             TypeEffect($"\nWelcome, {userName}! Let's explore how to stay safe online together.");
         }
+        static void ResponseSystem()
+        {
+            void TypeEffect(string text, int delay = 30)
+            {
+                foreach (char c in text)
+                {
+                    Console.Write(c);
+                    Thread.Sleep(delay);
+                }
+                Console.WriteLine();
+            }
+            while (true)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                TypeEffect("\nAsk me a question: ");
+                string input = Console.ReadLine()?.ToLower();
+                Console.ResetColor();
+
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    TypeEffect("I didn't quite understand that. Could you rephrase?");
+                    Console.ResetColor();
+                    continue;
+                }
+                Console.ForegroundColor = ConsoleColor.Green;
+                if (input.Contains("how are you"))
+                    TypeEffect("I'm just a bunch of code, but I'm running smoothly!");
+                else if (input.Contains("purpose"))
+                    TypeEffect("I'm here to help you learn about cybersecurity and stay safe online.");
+                else if (input.Contains("password"))
+                    TypeEffect("Use strong, unique passwords and enable two-factor authentication.");
+                else if (input.Contains("phishing"))
+                    TypeEffect("Be cautious with emails asking for personal info—verify before clicking links.");
+                else if (input.Contains("safe browsing"))
+                    TypeEffect("Stick to secure sites (https://), use antivirus software, and avoid suspicious downloads.");
+                else if (input.Contains("exit") || input.Contains("quit") || input.Contains("bye"))
+                {
+                    TypeEffect("Thank you for chatting! Stay safe online. 👋");
+                    break;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                TypeEffect("I didn't quite understand that. Could you rephrase?");
+            }
+            Console.ResetColor();
+        }
+
 
 
     }
