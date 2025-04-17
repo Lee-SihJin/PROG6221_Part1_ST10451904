@@ -17,7 +17,7 @@ namespace Chatbot
                 Console.WriteLine();
             }
             // Play greeting audio
-            SoundPlayer player = new SoundPlayer(@"C:\Users\lab_services_student\Desktop\Chatbot\08pgn-1x0pn.wav");
+            SoundPlayer player = new SoundPlayer(@"C:\Users\lab_services_student\Desktop\PROG6221_Part1_ST10451904\Chatbot\08pgn-1x0pn.wav");
             player.PlaySync(); // or .Play() for async
 
             // Proceed with chatbot logic
@@ -99,14 +99,15 @@ namespace Chatbot
                     TypeEffect("Stick to secure sites (https://), use antivirus software, and avoid suspicious downloads.");
                 else if (input.Contains("exit") || input.Contains("quit") || input.Contains("bye"))
                 {
-                    TypeEffect("Thank you for chatting! Stay safe online. 👋");
+                    TypeEffect("Thank you for chatting! Stay safe online. ");
                     break;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
+                    TypeEffect("I didn't quite understand that. Could you rephrase?");
                 }
-                TypeEffect("I didn't quite understand that. Could you rephrase?");
+               
             }
             Console.ResetColor();
         }
